@@ -1,0 +1,46 @@
+////////////////////  HOW TO MAKE PROMISE //////////////////////
+//Note : Please Refer calculation.js for running demos
+// refer calculation.js for code 
+setTimeout(function(){
+	console.log( 1+1 ); //here console.log you can think of handler or resolver function
+
+}, 3000);
+
+/***********************  how to wrap it in promise****************/
+
+//The Promise can be created using Promise Constructor ( new Promise() )
+//the promise constructor takes function with two callback functions (function as parameter)
+// that are resolve function and reject function
+
+var calculationPromise = new Promise( function ( resolve, rejet) {
+
+	// code to excute in promise
+	setTimeout(function(){
+		console.log( 1+1 ); //here console.log you can think of handler or resolver function  
+
+	}, 3000);
+
+}); 
+
+// using promise 
+var calculationPromise = new Promise( function ( resolve, rejet) {
+
+	// code to excute in promise
+	setTimeout(function(){
+		resolve( 1+1 ); //here instead of console.log we can use the resolve so after promise fulfilled
+						//this value is going to be resolved 
+
+	}, 1000);
+
+});
+
+//Chained resolver demo
+calculationPromise.then( (value) => {
+	return value + 1;
+}).then( (nextValue) => {
+	console.log(" Final value is " +nextValue);
+	
+})
+.catch( (error) => {
+	console.log("Something Went Wrong " +error);
+});

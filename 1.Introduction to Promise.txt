@@ -1,0 +1,59 @@
+/*******************   javascript promise   *********************************/
+
+alternative to async in js
+alternative to callback and event driven programming 
+
+
+****************************************************************************
+where to use ex. Ajax call, getting data from sensors. etc
+Promise has 3 States : 
+1. Pending   (waiting for completion or preparing data)  
+2. fulfilled / Resolved ( on sucesss / fulfilled)
+3. Rejected             (on not fulfilled)
+
+****************************  What a Promise looks Like ??  ***********************************************
+
+
+
+var jsonPromise =  getJSON("/profile.json");
+
+jsonPromise.then(<fulfilled handler>,< reject handler>);
+
+//intially promise is in pending state if its success then it wil call fulfilled handler (js function or callback function or named function)
+// if its rejected then it will called reject handler (js function or callback function or named function) 
+
+++++++++++++ way of using promises in JS +++++++++++++++++++++
+example: if fulfilled called renderProfile function in case of rejection call displayError function.
+1. jsonPromise.then( renderProfile, displayError);
+
+/************Most Preferred Way***********/
+2.jsonPromise.then( renderProfile).catch(displayError);
+//in then() passed handler is if only promise is fulfilled
+//catch() is here to onError rejection handler
+		or
+		
+	jsonPromise.then( renderProfile).   //fulfilled excute renderProfile
+				.then( getFriends)		//fulfilled after renderProfile promise fulfilled excute getFriends promise
+				.then( getOnlineStatus)  // same for getOnlineStatus this has been excuted in pipline kind excution
+				.catch( displayError);	// any thing goes wrong i.e rejected any promise in pipe catch it and display error
+
+************************************************************************************************************************************
+///////////////******************	Promise Object Methods *******************////////////////////////
+
+* then(<fulfilled handler>,< reject handler>);
+
+* then(<fulfilled handler>);
+
+* catch(< reject handler>);
+
+**********************************************************************************************************
+
+
+
+
+
+
+
+
+
+
